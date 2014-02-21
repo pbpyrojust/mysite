@@ -15,7 +15,7 @@ def index(request):
 	return HttpResponse(template.render(context))
 
 def detail(request, poll_id):
-	poll = get_object_or404(Poll, pk=poll_id)
+	poll = get_object_or_404(Poll, pk=poll_id)
 	#try:
 	#	poll = Poll.objectsget(pk=poll_id)
 	#except Poll.DoesNotExist:
