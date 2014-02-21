@@ -1,7 +1,10 @@
 {% if latest_poll_list %}
 	<ul>
 	{% for poll in latest_poll_list %}
-		<li><a href="{% url 'detail' poll.id %}">{{ poll.question }}</a></li>
+		<!-- Without the namespacing in project urls -->
+		<!--<li><a href="{% url 'detail' poll.id %}">{{ poll.question }}</a></li>-->
+		<!-- With the namespacing in project urls -->
+		<li><a href="{% url 'polls:detail' poll.id %}">{{ poll.question }}</a>
 	{% endfor %}
 	</ul>
 {% else %}
