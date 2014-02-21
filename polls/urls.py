@@ -7,6 +7,10 @@ urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     # ex: /polls/5/
     url(r'^(?P<poll_id>\d+)/$', views.detail, name='detail'),
+    # the 'name' value as called by the {% url %} template tag
+	#url(r'^(?P<poll_id>\d+)/$', views.detail, name='detail'),
+	# added the word 'specifics'
+	#url(r'^specifics/(?P<poll_id>\d+)/$', views.detail, name='detail'),
     # ex: /polls/5/results/
     url(r'^(?P<poll_id>\d+)/results/$', views.results, name='results'),
     # ex: /polls/5/vote/
