@@ -1,30 +1,12 @@
 from django.shortcuts import get_object_or_404, render
-from django.http import Http404, HttpResponse, HttpResponseRedirect
-from django.template import RequestContext, loader
-from django.core.urlresolvers import reverse
-from polls.models import Poll, Choice
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reversedfrom django.views import generic
 
-def index(request):
-	latest_poll_list = Poll.objects.order_by('-pub_date')[:5]
-	template = loader.get_template('polls/index.html')
-	context = RequestContext(request, {
-		'latest_poll_list': latest_poll_list,
-	})
-	#output = ', '.join([p.question for p in latest_poll_list])
-	return HttpResponse(template.render(context))
+from polls.models import Choice, Poll
 
-def detail(request, poll_id):
-	poll = get_object_or_404(Poll, pk=poll_id)
-	#try:
-	#	poll = Poll.objectsget(pk=poll_id)
-	#except Poll.DoesNotExist:
-	#	raise Http404
-	#return HttpResponse("You're looking at poll %s." % poll_id)
-	return render(request, 'polls/detail.html', {'poll': poll})
+class IndexView(generic.ListView):
+	template
 
-def results(request, poll_id):
-	poll = get_object_or_404(Poll, pk=poll_id)
-	return render(request, 'polls/results.html', {'poll': poll})
 
 def vote(request, poll_id):
 	p = get_object_or_404(Poll, pk=poll_id)
