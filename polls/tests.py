@@ -12,5 +12,5 @@ class PollMethodTests(TestCase):
 		was_published_recently() should return Flase for polls whose
 		pub_date is in the future
 		"""
-		futre_poll = Poll(pub_date=timezone.now() + datetime.timedelta(days=30))
+		future_poll = Poll(pub_date=timezone.now() + datetime.timedelta(days=30))
 		self.assertEqual(future_poll.was_published_recently(), False)
